@@ -20,4 +20,4 @@ Repurposed to be applied to assigning ZBT midnights (our house chores). Very WIP
 5. Run the converter script to generate the JSON
 6. Pass in the JSON to the midnights.py script and run it, via python3 midnights.py \<insert-path-to-JSON-here\> \<insert-path-to-output-JSON-here\>
 7. Take the values from the outputted JSON, fill in the Google spreadsheet with the assignments + new point values
-8. Repeat each week lol
+8. After the first week, repeat steps 4-7 each week lol (step 3 as well if midnight requirements change)
