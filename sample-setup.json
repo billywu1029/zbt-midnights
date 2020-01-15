@@ -1,0 +1,35 @@
+{
+	"dayToMidnights": {
+		"Monday": ["bathrooms", "waitings", "dinings"],
+		"Tuesday": ["dishes", "commons", "waitings"],
+		"Wednesday": ["bathrooms", "dinings", "waitings"],
+		"Thursday": ["dishes", "dinings", "commons", "bathrooms", "waitings"],
+		"Friday": ["dinings", "commons", "dishes"],
+		"Saturday": ["bathrooms"],
+		"Sunday": ["commons", "dishes"]
+	},
+	"midnightPointValues": {
+		"bathrooms": 1, "waitings": 1, "commons": 1, "dishes": 4, "dinings": 2
+	},
+	"midnightsToNumReq": {"bathrooms":  1, "dinings":  1, "waitings":  2, "commons":  1, "dishes":  1},
+	"people": ["Bill", "Dan Sun", "EQ", "Steven", "Tarunk", "Rajesh", "Jack"],
+	"dayPreferences": {
+		"Bill": ["Monday", "Wednesday", "Friday"],
+		"Dan Sun": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+		"EQ": ["Monday", "Wednesday", "Friday", "Saturday", "Sunday"],
+		"Steven": ["Saturday", "Sunday"],
+		"Tarunk": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+		"Rajesh": ["Monday", "Tuesday"],
+		"Jack": ["Friday", "Saturday", "Sunday"]
+	},
+	"midnightPreferences": {
+		"Bill": ["bathrooms", "waitings", "commons"],
+		"Dan Sun": ["bathrooms", "dinings", "dishes", "waitings"],
+		"EQ": ["bathrooms", "dishes", "dinings"],
+		"Steven": ["dishes", "commons"],
+		"Tarunk": ["waitings", "commons", "dinings", "bathrooms", "commons"],
+		"Rajesh": ["bathrooms", "commons"],
+		"Jack": ["dishes", "waitings", "dinings"]
+	},
+	"progress": {"Bill": 21, "Dan Sun": 30, "EQ": 4, "Steven": 10, "Tarunk": 40, "Rajesh": 45, "Jack": 15}
+}
