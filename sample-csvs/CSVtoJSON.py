@@ -1,4 +1,7 @@
 import re, json
+# import argparse, os
+import sys
+
 # TODO: Make this a command-line interface Python script
 def convertMidnightPrefs(inpPath: str) -> dict:
     """
@@ -86,12 +89,25 @@ def convertPointsProgress(inpPath: str) -> dict:
             assert name not in progress
             progress[name] = float(totalPoints)
     return {"progress": progress}
+#
+# def file_path(string):
+#     if os.path.isfile(string):
+#         return string
+#     else:
+#         raise FileNotFoundError(string)
 
 
 if __name__ == "__main__":
-    preferencesMap = convertMidnightPrefs("tests/midnightPrefs.csv")
-    midnightsMap = convertMidnightsAndPoints("tests/sampleMidnights.csv")
-    progressMap = convertPointsProgress("tests/midnightsPoints.csv")
+    # parser = argparse.ArgumentParser(description="Converts fields from 3 CSVs into a JSON required for midnights.py")
+    # parser.add_argument('prefs', type=file_path, help='path to midnight + day preferences CSV')
+    # parser.add_argument('week', type=file_path, help="path to the week's midnights CSV")
+    # parser.add_argument('points', type=file_path, help='path to midnight points CSV')
+    # args = parser.parse_args()
+    assert len(sys.argv) >= 5  # ["CSVtoJSON.py", <path1>, <path2>, <path3>, <outpath>]
+
+    preferencesMap = convertMidnightPrefs(sys.argv[1])
+    midnightsMap = convertMidnightsAndPoints(sys.argv[2])
+    progressMap = convertPointsProgress(sys.argv[3])
     result = {}
     for m in (preferencesMap, midnightsMap, progressMap):
         for k, v in m.items():
@@ -103,5 +119,5 @@ if __name__ == "__main__":
             preferencesMap["midnightPreferences"][bro] = list(midnightsMap["midnightPointValues"].keys())
         if bro not in preferencesMap["dayPreferences"]:
             preferencesMap["dayPreferences"][bro] = list(midnightsMap["dayToMidnights"].keys())
-    with open("tests/midnightsBigTest.json", "w") as outFile:
+    with open(sys.argv[4], "w") as outFile:
         json.dump(result, outFile)
