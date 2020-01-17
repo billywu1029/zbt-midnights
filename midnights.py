@@ -8,7 +8,7 @@ Date: 12/30/19
 """
 
 from FlowNetwork import *
-import json
+import json, sys
 
 POINTS_REQ = 59
 PERSON_BASE_COST = 10
@@ -257,6 +257,7 @@ def generateMinCostMaxFlowAssignments(G: FlowNetwork, people: list, midnightPoin
     @param outPath: path to output file - output file will be created/overwritten
     """
     cost, maxFlow = G.getMinCostMaxFlow()
+    print("Min-cost Max Flow identified...")
     peopleMidnightMap = getMidnightAssignments(G, people)
     dayToMidnightAssignmentsMap = getPeopleMidnightsToDayAssignments(peopleMidnightMap)
     peoplePointsGain = getPeoplePointsGain(dayToMidnightAssignmentsMap, midnightPointValues)
@@ -266,9 +267,15 @@ def generateMinCostMaxFlowAssignments(G: FlowNetwork, people: list, midnightPoin
 
 
 if __name__ == "__main__":
-    inpPath = "midnightsBigTest.json"
+    inpPath = sys.argv[1]  # Path of the input JSON containing prefs, points, etc.
+    outPath = sys.argv[2]  # Path of the output JSON of max flow assignments
+    flowNetworkSave = "flowboiTest.json"
     dayToMidnights, midnightPointValues, midnightsToNumReq, people, dayPreferences, midnightPreferences, progress = extractData(inpPath)
+    print("Data extracted from JSON...")
     G = generateMidnightsFlowNetwork(dayToMidnights, midnightPointValues, midnightsToNumReq, people, dayPreferences,
                                      midnightPreferences, progress)
-    generateMinCostMaxFlowAssignments(G, people, midnightPointValues, "assignments.json")
-    G.serializeToJSON("flowboiTest.json")  # Serializing after finding the min cost max flow
+    print("Flow Network generated...")
+    generateMinCostMaxFlowAssignments(G, people, midnightPointValues, outPath)
+    print("Assignments saved to %s" % outPath)
+    G.serializeToJSON(flowNetworkSave)  # Serializing after finding the min cost max flow
+    print("Flow Network saved to %s" % flowNetworkSave)
