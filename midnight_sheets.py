@@ -146,7 +146,7 @@ def read_vals(sheet_id: str, sheet_range: str) -> list:
 
 
 if __name__ == '__main__':
-    # assignmentsPath = sys.argv[1]
-    assignmentsPath = "assignmentsOnlyPrefs.json"
+    assignmentsPath = sys.argv[1]
+    # assignmentsPath = "assignmentsOnlyPrefs.json"
     populate_assignments_and_points(assignmentsPath, flatten_nested_list(read_vals(MASTER_SHEET_ID, BROS_RANGE)))
     a = 1
