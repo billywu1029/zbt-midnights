@@ -26,6 +26,7 @@ Currently have:
 4. Set up the authentication flow (basically the same as step 4 of the above quickstart tutorial): Run ```python3 authFlowSetup.py```. Now you should have read + write access to the spreadsheets linked to the ZBT account. You can verify that this step was successful if a token.pickle file was saved and contains "https://www.googleapis.com/auth/spreadsheet" inside somewhere (it can have random characters before and after, but as long as that is there and there's no "readonly" then you're gucci). There will also be a credentials.json that you should download into this directory on your local machine (move it from Downloads to wherever this dir is)
 
 *Actual Usage*
+
 5. Ok now everything's set up, you can send out the midnights pref form for the current week. This includes midnight preferences (eg dishes + commons etc.) and day preferences (eg M, W, F).
 6. Read in all preferences, points, and midnight tasks/values via some fancy script boi: In the terminal, run: ```python3 read_prefs_pts_tasks.py <insert-path-to-output-JSON>```
 7. Find the min-cost max flow assignments, and save them: In the terminal, run ```python3 midnights.py <path-to-JSON-from-step6> <path-to-output-assignments-JSON>```
