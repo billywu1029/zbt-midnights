@@ -11,7 +11,7 @@ Currently have:
  5. Script to populate the assignments + points into the master spreadsheet (also manual ranges needed, rip)
 
 ### TODO:
-1. **Finished** Make the ranges adjustable/automatic for both the master spreadsheet and the preferences
+1. **Simplify out the person|day intermediate nodes and just turn the whole problem into a min-weight bipartite matching instead. This will likely save a lot of performance time, reduces the network's complexity, and afaik changes very little about the network's assignment choice quality.**
 2. When ready, use the Spring prefs spreadsheet ID instead of the one for the Copy of Fall prefs
 3. Finish TODOs in Graph.py and FlowNetwork.py
 4. (if time permits) automatic emailing out of the prefs form each week
